@@ -1,0 +1,65 @@
+{
+  "users": [
+    {
+      "nickname": "Genshin4ever",
+      "name": "kozhon.amantay@gmail.com",
+      "password": "coolboy2005",
+      "isAdmin": true,
+      "cart": [],
+      "inventory": [],
+      "id": 1
+    }
+  ],
+  "items": [
+    {
+      "name": "Stick Sword",
+      "description": "Very cool sword. Made from 642310 sticks",
+      "image": "https://minecraft-inside.ru/uploads/files/2016-07/Super_Stick_Sword_Mod_1.png",
+      "price": 6,
+      "creator": "Genshin4ever",
+      "genre": "Minecraft",
+      "rarity": "Rare",
+      "comments": [],
+      "likes": [],
+      "id": 1
+    },
+    {
+      "name": "Staff of Homa",
+      "description": "HP increased by 20%. Additionally, provides an ATK Bonus based on 0.8% of the wielder’s Max HP. When the wielder's HP is less than 50%, this ATK Bonus is increased by an additional 1% of Max HP.",
+      "image": "https://genshin.kawaii.su/res/weapon/Staff_of_Homa.png",
+      "price": 120,
+      "creator": "Genshin4ever",
+      "genre": "Genshin Impact",
+      "rarity": "Legendary",
+      "comments": [],
+      "likes": [],
+      "id": 2
+    },
+    {
+      "name": "Meowmere",
+      "description": "The Meowmere is a Hardmode, post-Moon Lord, autoswinging melee weapon. When swung, it fires a projectile trailed by a rainbow and shaped like a cat's head, and consumes no mana or ammunition. The projectile is affected by gravity, pierces multiple enemies, and ricochets off of blocks. Each ricochet emits an explosion that damages nearby enemies. The projectile disappears after piercing four enemies (hitting the fifth one) or after ricocheting four times (hitting a block for the fifth time).",
+      "image": "https://www.pinclipart.com/picdir/big/169-1690083_pixel-sword-png-meowmere-terraria-clipart.png",
+      "price": 52,
+      "creator": "Genshin4ever",
+      "genre": "Terraria",
+      "rarity": "Mythical",
+      "comments": [],
+      "likes": [],
+      "id": 3
+    },
+    {
+      "name": "Enchanted Sword",
+      "description": "The Enchanted Sword is a pre-Hardmode, autoswinging projectile sword. When swung, it fires a sword-shaped projectile that costs no ammunition or mana. Both the sword and its projectiles produce lingering sparks that emit large amounts of light. The projectiles can be fired roughly every 1-2 seconds, and dissipates upon hitting an enemy or solid block.",
+      "image": "https://art.pixilart.com/70b1d2c2d46f859.png",
+      "price": 1,
+      "creator": "Genshin4ever",
+      "genre": "Terraria",
+      "rarity": "Common",
+      "comments": [],
+      "likes": [],
+      "id": 4
+    }
+  ],
+  "likes": [],
+  "wishlist": []
+}
