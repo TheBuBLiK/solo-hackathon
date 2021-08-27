@@ -118,7 +118,7 @@ const InventoryCard = () => {
                       color="textSecondary"
                       className={classes.gameCreator}
                     >
-                      {game.creator}
+                      {game.genre}
                     </Typography>
                     <Typography className={classes.gameDescr}>
                       {game.description.length > 60
@@ -126,7 +126,6 @@ const InventoryCard = () => {
                         : game.description}
                     </Typography>
                   </div>
-                  <Button className={classes.playBtn}>Play</Button>
                 </CardContent>
               </div>
               {/* <CardMedia className={classes.cover} image={game.image} /> */}

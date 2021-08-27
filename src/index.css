@@ -27,16 +27,12 @@ code {
 }
 .card {
   display: flex;
-  background-color: #262626 !important;
+  background-color: #34346b !important;
   margin: 10px;
-  width: 230px;
+  width: 460px;
   height: 230px;
   position: relative;
   transition: 1s;
-}
-
-.card:hover {
-  width: 460px;
 }
 
 .item-card-img {
