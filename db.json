@@ -18,9 +18,15 @@
       "name": "me@gmail.com",
       "password": "123",
       "cart": [
-        2
+        2,
+        5
       ],
-      "inventory": [],
+      "inventory": [
+        5,
+        1,
+        2,
+        3
+      ],
       "isAdmin": false,
       "passwordSec": "123",
       "id": 2

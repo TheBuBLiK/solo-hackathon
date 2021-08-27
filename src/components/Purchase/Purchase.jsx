@@ -166,7 +166,7 @@ const Purchase = () => {
               localStorage.setItem("buyNow", JSON.stringify([]));
               handleOpen();
               setTimeout(() => {
-                history.push("/cart");
+                history.push("/inventory");
               }, 1500);
             } else {
               alert("Type valid information");
