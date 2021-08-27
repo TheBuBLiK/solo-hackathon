@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useItems } from "../../contexts/ItemContext";
-import { makeStyles } from "@material-ui/core";
+import { Button, makeStyles } from "@material-ui/core";
+import axios from "axios";
+import { JSON_API_USERS } from "../../helper/consts";
 
 const useStyles = makeStyles(() => ({
   editBtn: {
@@ -26,12 +28,32 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     flexWrap: "wrap",
     margin: "10px",
+    justifyContent: "space-between",
   },
 }));
 const ItemCard = ({ item }) => {
   const classes = useStyles();
   const { deleteItem, setEditItemInfo, history } = useItems();
   const { logged } = useAuth();
+  const toBuyNow = (id) => {
+    if (!localStorage.getItem("buyNow")) {
+      localStorage.setItem("buyNow", []);
+      localStorage.setItem("buyNow", JSON.stringify(id));
+    }
+    localStorage.setItem("buyNow", JSON.stringify(id));
+  };
+  const addItemCart = async (itemToCart) => {
+    const usersCart = await axios(JSON_API_USERS);
+    const curUser = JSON.parse(localStorage.getItem("user"));
+    usersCart.data.map((user) => {
+      if (curUser.name == user.name) {
+        user.cart.push(itemToCart);
+        axios.patch(`${JSON_API_USERS}/${user.id}`, user);
+        curUser.cart.push(itemToCart);
+        localStorage.setItem("user", JSON.stringify(curUser));
+      }
+    });
+  };
 
   return (
     <div
@@ -48,7 +70,19 @@ const ItemCard = ({ item }) => {
       }}
     >
       <div className={classes.cardPinnacle}>
-        <div className={classes.itemImgDiv}>
+        <div
+          className={classes.itemImgDiv}
+          style={{
+            border:
+              item.rarity == "Rare"
+                ? "1px solid orange"
+                : item.rarity == "Mythical"
+                ? "1px solid red"
+                : item.rarity == "Legendary"
+                ? "1px solid yellow"
+                : "1px solid white",
+          }}
+        >
           <img
             className="item-card-img"
             src={item.image}
@@ -87,8 +121,38 @@ const ItemCard = ({ item }) => {
           ? item.description.slice(0, 100) + "..."
           : item.description}
       </div>
-      {logged && logged.isAdmin ? (
-        <div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          marginTop: "5px",
+        }}
+      >
+        <div className={classes.buyBtns}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => {
+              history.push("/purchase");
+              toBuyNow(item.id);
+            }}
+          >
+            Buy now
+          </Button>
+        </div>
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={() => {
+            addItemCart(item.id);
+          }}
+        >
+          Add to cart
+        </Button>
+      </div>
+      {(logged && logged.isAdmin) ||
+      (logged && logged.nickname == item.creator) ? (
+        <div style={{ margin: "10px 0 0 10px" }}>
           <button
             className={classes.deleteBtn}
             onClick={() => deleteItem(item.id)}

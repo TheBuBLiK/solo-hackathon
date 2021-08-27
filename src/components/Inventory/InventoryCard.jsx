@@ -37,17 +37,17 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: "10px !important",
   },
 
-  itemTitle: {
+  gameTitle: {
     textAlign: "center",
     color: "white",
     fontSize: "20px",
   },
-  itemCreator: {
+  gameCreator: {
     textAlign: "center",
     color: "grey",
     fontSize: "15px",
   },
-  itemDescr: {
+  gameDescr: {
     color: "white",
     fontSize: "15px",
   },
@@ -81,10 +81,10 @@ const InventoryCard = () => {
   const getItems = async () => {
     const { data } = await axios(ITEMS_API);
 
-    data.map((item) => {
+    data.map((game) => {
       curUser.inventory.map((libItem) => {
-        if (item.id === libItem) {
-          inventory.push(item);
+        if (game.id === libItem) {
+          inventory.push(game);
         }
       });
     });
@@ -100,41 +100,41 @@ const InventoryCard = () => {
       <h2 className={classes.inventoryText}>Your inventory</h2>
       {curUser.inventory.length > 0 ? (
         <Container className={classes.container}>
-          {inventoryItem.map((item) => (
+          {inventoryItem.map((game) => (
             <div className="card">
               <img
-                src={item.image}
-                alt={item.name}
+                src={game.image}
+                alt={game.name}
                 className={classes.cardImg}
               />
               <div className={classes.details}>
                 <CardContent className={classes.content}>
                   <div>
-                    <Typography className={classes.itemTitle}>
-                      {item.name}
+                    <Typography className={classes.gameTitle}>
+                      {game.name}
                     </Typography>
                     <Typography
                       variant="subtitle1"
                       color="textSecondary"
-                      className={classes.itemCreator}
+                      className={classes.gameCreator}
                     >
-                      {item.creator}
+                      {game.creator}
                     </Typography>
-                    <Typography className={classes.itemDescr}>
-                      {item.description.length > 60
-                        ? item.description.slice(0, 60) + "..."
-                        : item.description}
+                    <Typography className={classes.gameDescr}>
+                      {game.description.length > 60
+                        ? game.description.slice(0, 60) + "..."
+                        : game.description}
                     </Typography>
                   </div>
                   <Button className={classes.playBtn}>Play</Button>
                 </CardContent>
               </div>
-              {/* <CardMedia className={classes.cover} image={item.image} /> */}
+              {/* <CardMedia className={classes.cover} image={game.image} /> */}
             </div>
           ))}
         </Container>
       ) : (
-        <h2 className={classes.noItem}>There isn't items in your inventory</h2>
+        <h2 className={classes.noItem}>There isn't games in your inventory</h2>
       )}
     </>
   );

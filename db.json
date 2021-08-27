@@ -5,9 +5,25 @@
       "name": "kozhon.amantay@gmail.com",
       "password": "coolboy2005",
       "isAdmin": true,
-      "cart": [],
-      "inventory": [],
+      "cart": [
+        2
+      ],
+      "inventory": [
+        1
+      ],
       "id": 1
+    },
+    {
+      "nickname": "me",
+      "name": "me@gmail.com",
+      "password": "123",
+      "cart": [
+        2
+      ],
+      "inventory": [],
+      "isAdmin": false,
+      "passwordSec": "123",
+      "id": 2
     }
   ],
   "items": [

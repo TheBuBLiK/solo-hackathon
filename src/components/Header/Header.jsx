@@ -169,18 +169,6 @@ export default function Header() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem onClick={() => history.push("/contacts")}>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <ContactsIcon />
-        </IconButton>
-        <p>Contacts</p>
-      </MenuItem>
-      <MenuItem onClick={() => history.push("/aboutus")}>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <InfoIcon />
-        </IconButton>
-        <p> About us</p>
-      </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
@@ -238,18 +226,7 @@ export default function Header() {
               >
                 Cart
               </Button>
-              <Button
-                className={classes.navbarBtn}
-                onClick={() => history.push("/contacts")}
-              >
-                Contacts
-              </Button>
-              <Button
-                className={classes.navbarBtn}
-                onClick={() => history.push("/aboutus")}
-              >
-                About us
-              </Button>
+
               <Button
                 className={classes.navbarBtn}
                 edge="end"

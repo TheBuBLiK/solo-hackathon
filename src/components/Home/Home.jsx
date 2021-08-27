@@ -16,7 +16,7 @@ import Leftbar from "../Sidebar/Sidebar";
 const Home = () => {
   const { modal } = useItems();
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", backgroundColor: "#252550" }}>
       <Leftbar />
 
       <Container style={{ width: "100%" }}>

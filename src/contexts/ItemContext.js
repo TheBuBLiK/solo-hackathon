@@ -43,7 +43,7 @@ const reducer = (state = INIT_STATE, action) => {
   }
 };
 
-let itemsCount = 3;
+let itemsCount = 5;
 
 const ItemContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
