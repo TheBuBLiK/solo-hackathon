@@ -62,6 +62,7 @@ const LogIn = () => {
     nickname: "",
     name: "",
     password: "",
+    favourites: [],
     cart: [],
     inventory: [],
     isAdmin: false,

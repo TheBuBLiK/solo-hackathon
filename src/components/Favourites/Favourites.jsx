@@ -1,14 +1,15 @@
-import React from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
+import {
+  CardContent,
+  Container,
+  makeStyles,
+  Typography,
+  Button,
+} from "@material-ui/core";
 import axios from "axios";
-import { ITEMS_API, JSON_API_USERS } from "../../helper/consts";
-import { useState } from "react";
-import { useEffect } from "react";
-import { Container, Button } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
+import React, { useEffect, useState } from "react";
+import { ITEMS_API, JSON_API_USERS } from "../../helper/consts";
+const useStyles = makeStyles(() => ({
   container: {
     display: "flex",
     flexWrap: "wrap",
@@ -75,37 +76,51 @@ const useStyles = makeStyles((theme) => ({
 
     fontSize: "16px",
   },
+  noItem: {
+    color: "white",
+    height: "80vh",
+    textAlign: "center",
+    marginTop: "20px",
+  },
 }));
-
-const InventoryCard = () => {
-  const [inventoryItem, setInventoryItem] = useState([]);
+const Favourites = () => {
+  const [favItem, setFavItem] = useState([]);
   const classes = useStyles();
-  const theme = useTheme();
-  let inventory = [];
+  let fav = [];
   const curUser = JSON.parse(localStorage.getItem("user"));
   const getItems = async () => {
     const { data } = await axios(ITEMS_API);
 
     data.map((game) => {
-      curUser.inventory.map((libItem) => {
-        if (game.id === libItem) {
-          inventory.push(game);
+      curUser.favourites.map((favItem) => {
+        if (game.id === favItem) {
+          fav.push(game);
         }
       });
     });
 
-    setInventoryItem(inventory);
+    setFavItem(fav);
+  };
+  const delFav = async (fav) => {
+    const users = await axios(JSON_API_USERS);
+    users.data.map(async (user) => {
+      if (curUser.name == user.name) {
+        const newFavs = user.favourites.filter((favs) => favs != fav);
+        console.log(newFavs);
+        const newData = { ...user, favourites: newFavs };
+        await axios.patch(`${JSON_API_USERS}/${user.id}`, newData);
+        localStorage.setItem("user", JSON.stringify(newData));
+      }
+    });
   };
   useEffect(() => {
     getItems();
   }, []);
-
   return (
-    <>
-      <h2 className={classes.inventoryText}>Your inventory</h2>
-      {curUser.inventory.length > 0 ? (
+    <div style={{ height: "80vh", backgroundColor: "#252550" }}>
+      {curUser.favourites.length > 0 ? (
         <Container className={classes.container}>
-          {inventoryItem.map((game) => (
+          {favItem.map((game) => (
             <div
               className="card"
               style={{
@@ -157,6 +172,15 @@ const InventoryCard = () => {
                         ? game.description.slice(0, 60) + "..."
                         : game.description}
                     </Typography>
+                    <Button
+                      style={{ color: "white", backgroundColor: "#2a295b" }}
+                      onClick={() => {
+                        delFav(game.id);
+                        getItems();
+                      }}
+                    >
+                      Delete from favourites
+                    </Button>
                   </div>
                 </CardContent>
               </div>
@@ -165,10 +189,10 @@ const InventoryCard = () => {
           ))}
         </Container>
       ) : (
-        <h2 className={classes.noItem}>There isn't items in your inventory</h2>
+        <h2 className={classes.noItem}>There is no favourites games</h2>
       )}
-    </>
+    </div>
   );
 };
 
-export default InventoryCard;
+export default Favourites;

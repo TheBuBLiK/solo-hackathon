@@ -21,6 +21,8 @@ import AboutUs from "../components/Information/AboutUs";
 import Contacts from "../components/Information/Contacts";
 import Inventory from "../components/Inventory/Inventory";
 
+import Favourites from "../components/Favourites/Favourites";
+
 const Routes = () => {
   return (
     <div>
@@ -32,6 +34,7 @@ const Routes = () => {
               <Route exact path="/aboutus" component={AboutUs} />
               <Route exact path="/contacts" component={Contacts} />
               <ProtectedRoute exact path="/inventory" component={Inventory} />
+              <ProtectedRoute exact path="/favourites" component={Favourites} />
               <ProtectedRoute exact path="/purchase" component={Purchase} />
               <ProtectedRoute exact path="/cart" component={Cart} />
               <Route exact path="/login" component={LogIn} />

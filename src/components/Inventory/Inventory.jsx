@@ -7,7 +7,7 @@ const Inventory = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div style={{ minHeight: "80vh" }}>
+    <div style={{ minHeight: "80vh", backgroundColor: "#252550" }}>
       <InventoryCard />
     </div>
   );

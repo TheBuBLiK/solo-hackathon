@@ -169,6 +169,11 @@ export default function Header() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <MenuItem onClick={() => history.push("/inventory")}>INVENTORY</MenuItem>
+      <MenuItem onClick={() => history.push("/cart")}>CART</MenuItem>
+      <MenuItem onClick={() => history.push("/favourites")}>
+        FAVOURITES
+      </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
@@ -213,12 +218,20 @@ export default function Header() {
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               {logged ? (
-                <Button
-                  className={classes.navbarBtn}
-                  onClick={() => history.push("/inventory")}
-                >
-                  Inventory
-                </Button>
+                <>
+                  <Button
+                    className={classes.navbarBtn}
+                    onClick={() => history.push("/inventory")}
+                  >
+                    Inventory
+                  </Button>
+                  <Button
+                    className={classes.navbarBtn}
+                    onClick={() => history.push("/favourites")}
+                  >
+                    Favourites
+                  </Button>
+                </>
               ) : null}
               <Button
                 onClick={() => history.push("/cart")}

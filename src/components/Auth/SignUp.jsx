@@ -56,6 +56,7 @@ const SignUp = () => {
     nickname: "",
     name: "",
     password: "",
+    favourites: [],
     cart: [],
     inventory: [],
     isAdmin: false,

@@ -27,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
     margin: "20px 0",
     display: "flex",
     alignItems: "center",
-    backgroundColor: "rgb(32 32 32)",
+    backgroundColor: "#34346b",
+    width: "100%",
   },
   title: {
     color: "white",
@@ -88,7 +89,7 @@ const Cart = () => {
   }, []);
 
   return (
-    <>
+    <div style={{ backgroundColor: "#252550" }}>
       {cartItems.length > 0 ? (
         <Container className={classes.main}>
           <h2 className={classes.title}>Your cart</h2>
@@ -124,7 +125,7 @@ const Cart = () => {
       ) : (
         <h2 className={classes.noItem}>There isn't items in your cart</h2>
       )}
-    </>
+    </div>
   );
 };
 

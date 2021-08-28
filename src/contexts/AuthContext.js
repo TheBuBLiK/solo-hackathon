@@ -54,6 +54,7 @@ const AuthContextProvider = ({ children }) => {
         e.cart = user.cart;
         e.inventory = user.inventory;
         e.nickname = user.nickname;
+        e.favourites = user.favourites;
         localStorage.setItem("user", JSON.stringify(e));
         dispatch({
           type: ACTIONS.AUTH_OFFLINE,

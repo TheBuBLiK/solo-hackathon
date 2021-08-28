@@ -5,31 +5,35 @@
       "name": "kozhon.amantay@gmail.com",
       "password": "coolboy2005",
       "isAdmin": true,
-      "cart": [
-        2
-      ],
-      "inventory": [
-        1
-      ],
+      "cart": [],
+      "favourites": [],
+      "inventory": [],
       "id": 1
     },
     {
-      "nickname": "me",
-      "name": "me@gmail.com",
+      "nickname": "a",
+      "name": "a@gmail.com",
       "password": "123",
+      "favourites": [],
       "cart": [
-        2,
-        5
-      ],
-      "inventory": [
-        5,
+        1,
+        1,
         1,
         2,
-        3
+        2,
+        2
       ],
+      "inventory": [],
       "isAdmin": false,
       "passwordSec": "123",
-      "id": 2
+      "id": 2,
+      "likes": [
+        2,
+        3,
+        2,
+        2,
+        3
+      ]
     }
   ],
   "items": [
